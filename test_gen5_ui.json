@@ -1,0 +1,49 @@
+{
+	"events": [{
+		"type": "{{AP_SERIAL}}.watch",
+		"name": "mediaplay",
+		"args": {
+			"pattern": "Failed"
+		},
+		"command": [
+			".echo Failed to play media",
+			".exit"
+		]
+	}
+	],
+
+	"prologue": [
+		".echo \"Test start\""
+	],
+	"scenarios": [{
+		"name": "Home",
+		"command": [
+			".delay 1",
+			".echo Home touch test",
+			"{{AP_SERIAL}}.write /home/root/tigger/input-macro /home/root/tigger/home.input\n",
+			".delay 15"
+		]
+	},
+	{
+		"name": "Navi",
+		"command": [
+			".echo Navi test",
+			"{{AP_SERIAL}}.write /home/root/tigger/input-macro /home/root/tigger/navi.input\n",
+			".delay 30"
+		]
+	},
+	{
+		"name": "Mediaplayer",
+		"command": [
+			".echo Mediaplayer test",
+			"{{AP_SERIAL}}.write /home/root/tigger/input-macro /home/root/tigger/mediaplay.input\n",
+			".delay 100"
+		]
+	}
+	],
+
+	"epilogue": [
+		".echo \"Test done\"",
+		".exit"
+	]
+}
